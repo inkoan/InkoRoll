@@ -17,7 +17,7 @@ using UnityEngine.UI;
 public class UseInkoRollSample : MonoBehaviour
 {
     [SerializeField] private GameObject _objAnotherSample;
-    [SerializeField] private Button _btmChangeAnotherSample;
+    [SerializeField] private Button _btnChangeAnotherSample;
 
     [SerializeField] private InkoRoll _inkoRoll1;
     [SerializeField] private TMP_InputField _numData1;
@@ -47,7 +47,7 @@ public class UseInkoRollSample : MonoBehaviour
     /// </summary>
     private void OnDestroy()
     {
-        _btmChangeAnotherSample.onClick.RemoveAllListeners();
+        _btnChangeAnotherSample.onClick.RemoveAllListeners();
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class UseInkoRollSample : MonoBehaviour
     private void Start()
     {
         // サンプル切り替え
-        _btmChangeAnotherSample.onClick.AddListener(
+        _btnChangeAnotherSample.onClick.AddListener(
             () =>
             {
                 _objAnotherSample.SetActive(true);
@@ -142,6 +142,8 @@ public class UseInkoRollSample : MonoBehaviour
     {
         _itemType.Clear();
         _data1.Clear();
+        // 表示に使うデータを用意します
+        // ここではデータが何番目かを表すテキストだけを持つクラスを指定の数生成しています
         int num = int.Parse(_numData1.text);
         for (int i = 0; i < num; i++)
         {
@@ -149,7 +151,10 @@ public class UseInkoRollSample : MonoBehaviour
         }
         // スクロールビューのデータの設定:データの個数/データが表示されるときの処理/ボタン押したときの処理
         _inkoRoll1.Setup(
-            _data1.Count,
+            _data1.Count, // データの個数
+                          // 要素が描画される場合の処理:
+                          //    要素にアタッチされた表示や挙動のための処理を取得して
+                          //    実際にどう描画するかなどの指示をここで出します
             (index, cell) =>
             {
                 cell.UpdateIndex(index);
@@ -159,6 +164,10 @@ public class UseInkoRollSample : MonoBehaviour
                     sampleItem.SetData(_data1[index].Title);
                 }
             },
+            // 要素内のボタンが押された場合:
+            //    何番目の要素が押されたか/要素内のボタンの内登録されている何個目のボタンが押されたかが
+            //    返ってきますので、それに合わせて処理を行います
+            //    サンプルではただ押されたボタンのInteractableをオフにするだけの処理をしています
             (index, buttonIndex, cell) =>
             {
                 InkoRollItemSample sampleItem = cell.GetCellView<InkoRollItemSample>();
@@ -178,11 +187,14 @@ public class UseInkoRollSample : MonoBehaviour
     {
         _itemType.Clear();
         _data2.Clear();
+        // 表示に使うデータを用意します
+        // ここではデータが何番目かを表すテキストだけを持つクラスを指定の数生成しています
         int num = int.Parse(_numData2.text);
         for (int i = 0; i < num; i++)
         {
             _data2.Add(new InkoRollItemSampleData("title" + i));
-            // ランダムで3個のプレハブを混在させる
+            // サンプルでは3個のプレハブを登録しているので
+            // ここで適当に0～2のタイプを割り振っています
             var rand = UnityEngine.Random.Range(0, 100);
             if (rand < 10)
             {
@@ -199,7 +211,11 @@ public class UseInkoRollSample : MonoBehaviour
         }
         // スクロールビューのデータの設定:混在型はindex毎にどの要素を使うかの配列/データが表示されるときの処理/ボタン押したときの処理
         _inkoRoll2.Setup(
+            // ここで各要素がどのタイプであるかの配列を渡します
             _itemType.ToArray(),
+            // 要素が描画される場合の処理:
+            //    要素にアタッチされた表示や挙動のための処理を取得して
+            //    実際にどう描画するかなどの指示をここで出します
             (index, cell) =>
             {
                 cell.UpdateIndex(index);
@@ -209,6 +225,10 @@ public class UseInkoRollSample : MonoBehaviour
                     sampleItem.SetData(_data2[index].Title);
                 }
             },
+            // 要素内のボタンが押された場合:
+            //    何番目の要素が押されたか/要素内のボタンの内登録されている何個目のボタンが押されたかが
+            //    返ってきますので、それに合わせて処理を行います
+            //    サンプルではただ押されたボタンのInteractableをオフにするだけの処理をしています
             (index, buttonIndex, cell) =>
             {
                 InkoRollItemSample sampleItem = cell.GetCellView<InkoRollItemSample>();
@@ -228,17 +248,22 @@ public class UseInkoRollSample : MonoBehaviour
     {
         _itemType.Clear();
         _data3.Clear();
+        // 表示に使うデータを用意します
+        // ここではデータが何番目かを表すテキストだけを持つクラスを指定の数生成しています
         int num3 = int.Parse(_numData3.text);
         for (int i = 0; i < num3; i++)
         {
-            // 可変サイズ用にテキスト部に5～100文字のAを追加
+            // 可変サイズ用にテキスト部に5～50文字のAを追加
             var rand = UnityEngine.Random.Range(5, 50);
             var txtAdd = " ";
             for (var t = 0; t < rand; t++) txtAdd += "A";
             _data3.Add(new InkoRollItemSampleData("title" + i + txtAdd));
         }
         _inkoRoll3.Setup(
-            _data3.Count,
+            _data3.Count, // データの個数
+                          // 要素が描画される場合の処理:
+                          //    要素にアタッチされた表示や挙動のための処理を取得して
+                          //    実際にどう描画するかなどの指示をここで出します
             (index, cell) =>
             {
                 cell.UpdateIndex(index);
@@ -248,6 +273,10 @@ public class UseInkoRollSample : MonoBehaviour
                     sampleItem.SetData(_data3[index].Title);
                 }
             },
+            // 要素内のボタンが押された場合:
+            //    何番目の要素が押されたか/要素内のボタンの内登録されている何個目のボタンが押されたかが
+            //    返ってきますので、それに合わせて処理を行います
+            //    サンプルではただ押されたボタンのInteractableをオフにするだけの処理をしています
             (index, buttonIndex, cell) =>
             {
                 InkoRollItemSample sampleItem = cell.GetCellView<InkoRollItemSample>();
@@ -256,6 +285,15 @@ public class UseInkoRollSample : MonoBehaviour
                     sampleItem.SetButtonOff(buttonIndex);
                 }
             },
+            // 要素のサイズがデータの内容によって変わる場合の処理:
+            //    リスト要素のサイズを確定できる最低限の処理を登録します
+            //    この処理はスクロールビューを描画する直前に画面外で各要素が一度描画され
+            //    要素のサイズを確定してからスクロールビュー内での座標をマッピングします
+            //    スクロールビューを表示しながらサイズを変更することはできないことにご注意ください
+            //    アイコンなどの場合、ロードまでしてしまうと多分めちゃくちゃ重くなるので
+            //    アイコンと同サイズの空要素を表示させるだけにするなど工夫してください
+            //    サンプルではタイトルのテキストがランダムな長さになっているので
+            //    それを一度表示させてサイズを確定しています
             (index, cell) =>
             {
                 InkoRollItemSample sampleItem = cell.GetCellView<InkoRollItemSample>();
