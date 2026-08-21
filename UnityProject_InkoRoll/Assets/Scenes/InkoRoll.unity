@@ -9515,7 +9515,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1085598897}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99978113
+  m_Size: 0.96136826
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11389,7 +11389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00076761184}
+  m_AnchoredPosition: {x: 0, y: 0.000039459414}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1461953950
@@ -11658,7 +11658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objAnotherSample: {fileID: 1738195706}
-  _btmChangeAnotherSample: {fileID: 954872482}
+  _btnChangeAnotherSample: {fileID: 954872482}
   _inkoRoll1: {fileID: 361664805}
   _numData1: {fileID: 1249445005}
   _btnSetCreateScrollView1: {fileID: 452038157}
@@ -13694,7 +13694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objAnotherSample: {fileID: 1524395167}
-  _btmChangeAnotherSample: {fileID: 1338720539}
+  _btnChangeAnotherSample: {fileID: 1338720539}
   _inkoRoll1: {fileID: 436374207}
   _numData1: {fileID: 900088439}
   _btnSetCreateScrollView1: {fileID: 86322915}
