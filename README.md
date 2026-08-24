@@ -32,7 +32,8 @@ Assets\
       また、ボタンがある場合ボタンも登録します\
       複数のボタンを登録可能です(なくても良い)
      ![How To Use 3](ImgReadme/InkoRoll_HowToUse_3.png)
-  4. 使用するリスト要素をInkoRollItemにアタッチします
+  4. 使用するリスト要素をInkoRollItemにアタッチします\
+     サンプルのlistItemV_226x60.prefabを2列で表示するのでスクロールビューの幅は入り切るよう調整します
      ![How To Use 4](ImgReadme/InkoRoll_HowToUse_4.png)
   5. スクロールビューを参照しているソース側でデータのセットと、表示時の挙動、ボタン押下時の挙動などを登録します\
      要素が可変する場合、要素が確定する最低限の処理を登録します\
@@ -232,6 +233,17 @@ public class InkoRollItemSampleData
 }
 
 ```
+
+## 使用イメージ
+サンプルではそれぞれ3タイプのスクロールビューの使用サンプルを縦横いずれも確認できるようになっています\
+右上のボタンで縦横を切り替えてご覧ください
+1. 通常、固定サイズの1～複数列対応スクロールビュー
+![Scroll View Tyep 1](ImgReadme/InkoRoll_type1.png)
+2. 複数タイプのリスト要素を含むスクロールビュー
+![Scroll View Tyep 3](ImgReadme/InkoRoll_type2.png)
+2. 可変するリスト要素のスクロールビュー
+![Scroll View Tyep 3](ImgReadme/InkoRoll_type3.png)
+
 ## その他
 - 任意の要素に表示を移動するMoveToあります
 - データの更新があってスクロールビューを更新する場合は再度Setupを実行してください
