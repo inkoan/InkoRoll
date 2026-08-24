@@ -23,14 +23,18 @@ Assets\
 
 ## 使い方
   1. Unityのメニューから通常のスクロールビューを作成します
+     ![How To Use 1](ImgReadme/InkoRoll_HowToUse_1.png)
   2. スクロールビューと同じ階層にInkoRollをアタッチします
      スクロール方向、余白、可変にするか、ログを出すかどうかを設定します
+     ![How To Use 2](ImgReadme/InkoRoll_HowToUse_2.png)
   3. リスト要素を作成してInkoRollItemをアタッチします\
       中身を更新するためのソースを作成してアタッチし、そのソースがアタッチされているオブジェクトをInkoRollItemのContentにアタッチします\
       また、ボタンがある場合ボタンも登録します\
       複数のボタンを登録可能です(なくても良い)
-  5. 使用するリスト要素をInkoRollItemにアタッチします
-  6. スクロールビューを参照しているソース側でデータのセットと、表示時の挙動、ボタン押下時の挙動などを登録します\
+     ![How To Use 3](ImgReadme/InkoRoll_HowToUse_3.png)
+  4. 使用するリスト要素をInkoRollItemにアタッチします
+     ![How To Use 4](ImgReadme/InkoRoll_HowToUse_4.png)
+  5. スクロールビューを参照しているソース側でデータのセットと、表示時の挙動、ボタン押下時の挙動などを登録します\
      要素が可変する場合、要素が確定する最低限の処理を登録します\
      UseInkoRollSample.csではリスト要素数を指定しての再作成、MoveToの実行ボタン、\
      縦横の切り替えなども実装しているのでそちらもご覧ください
